@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="green_light">#90EE90</color>
+    <color name="green_dark">#006400</color>
+    <color name="green_forest">#228B22</color>
+    <color name="green_lime">#32CD32</color>
+    <color name="green_sea">#2E8B57</color>
+    <color name="green_olive">#808000</color>
+    <color name="green_teal">#008080</color>
+    <color name="green_spring">#00FF7F</color>
+    <color name="green_jade">#00A86B</color>
+    <color name="green_moss">#8A9A5B</color>
+
+</resources>
