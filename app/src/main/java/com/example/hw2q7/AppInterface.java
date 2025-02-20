@@ -99,6 +99,49 @@ public class AppInterface extends RelativeLayout
         downButton.setLayoutParams(downButtonLayout);
         addView(downButton);
 
+        //left Button
+        leftButton = new Button(context);
+        leftButton.setId(Button.generateViewId());
+        leftButton.setText("Left");
+        leftButton.setTextColor(Color.parseColor("#FF000000"));
+        leftButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+        leftButton.setBackgroundColor(Color.parseColor("#E9967A"));
+        leftButton.setOnClickListener(buttonHandler);
+        //setting the layouts for the left button
+        RelativeLayout.LayoutParams leftButtonLayout = new RelativeLayout.LayoutParams(0,0);
+        leftButtonLayout.width = ViewGroup.LayoutParams.WRAP_CONTENT;
+        leftButtonLayout.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        leftButtonLayout.topMargin = 120 * DP;
+        leftButtonLayout.rightMargin = 20 * DP;
+        leftButtonLayout.addRule(RelativeLayout.LEFT_OF,upButton.getId());
+        leftButtonLayout.addRule(RelativeLayout.BELOW,grid.getId());
+        leftButtonLayout.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        leftButton.setLayoutParams(leftButtonLayout);
+        addView(leftButton);
+
+        //right button
+        rightButton = new Button(context);
+        rightButton.setId(Button.generateViewId());
+        rightButton.setText("Right");
+        rightButton.setTextColor(Color.parseColor("#FF000000"));
+        rightButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+        rightButton.setBackgroundColor(Color.parseColor("#E9967A"));
+        rightButton.setOnClickListener(buttonHandler);
+        //setting layouts for the right button
+        RelativeLayout.LayoutParams rightButtonLayout = new RelativeLayout.LayoutParams(0,0);
+        rightButtonLayout.width = ViewGroup.LayoutParams.WRAP_CONTENT;
+        rightButtonLayout.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        rightButtonLayout.topMargin = 120 * DP;
+        rightButtonLayout.leftMargin = 20 * DP;
+        rightButtonLayout.addRule(RelativeLayout.RIGHT_OF,upButton.getId());
+        rightButtonLayout.addRule(RelativeLayout.BELOW,grid.getId());
+        rightButtonLayout.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        rightButton.setLayoutParams(rightButtonLayout);
+        addView(rightButton);
+
+
+
+
 
     }
 
