@@ -55,13 +55,13 @@ public class AppInterface extends RelativeLayout
         initialGrid.setColumnCount(BOARD_SIZE);
 
         //setting layouts for the grid
-        LayoutParams gridParams = new LayoutParams
+        LayoutParams initialGridParams = new LayoutParams
                 (
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT
                 );
-        gridParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
-        initialGrid.setLayoutParams(gridParams);
+        initialGridParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        initialGrid.setLayoutParams(initialGridParams);
 
         //creating a goal board
         initialBoard = new TextView[BOARD_SIZE][BOARD_SIZE];
@@ -98,7 +98,9 @@ public class AppInterface extends RelativeLayout
         //end initial board
 
 
-        //create goad board
+
+
+        //create goal board
         //create a grid layout inside relative layout
         grid = new GridLayout(context);
         grid.setId(GridLayout.generateViewId());
@@ -149,8 +151,9 @@ public class AppInterface extends RelativeLayout
         addView(grid);
         //end of goal board
 
-
-
+        
+        //creating and displaying buttons
+        drawButtons(context,buttonHandler);
 
         //setting the background screen color
         setBackgroundColor(Color.parseColor("#DDDDDD"));
@@ -242,17 +245,27 @@ public class AppInterface extends RelativeLayout
 
     }
 
-    private void drawInitialBoard(Context context)
+    public void drawCurrentBoard(char[][] currentBoard)
     {
-
-
-
+        for(int x = 0 ;  x < BOARD_SIZE ; x++)
+        {
+            for (int y = 0; y < BOARD_SIZE; y++)
+            {
+                initialBoard[x][y].setText(currentBoard[x][y]);
+            }
+        }
     }
 
 
-    public void drawGoalBoard(Context context)
+    public void drawGoalBoard(char[][] goal)
     {
-
+        for(int x = 0 ;  x < BOARD_SIZE ; x++)
+        {
+            for (int y = 0; y < BOARD_SIZE; y++)
+            {
+                goalBoard[x][y].setText(goal[x][y]);
+            }
+        }
     }
 
 
