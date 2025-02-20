@@ -12,5 +12,19 @@
     <color name="green_spring">#00FF7F</color>
     <color name="green_jade">#00A86B</color>
     <color name="green_moss">#8A9A5B</color>
+    <color name="red_light">#FFA07A</color>
+    <color name="red_salmon">#FA8072</color>
+    <color name="red_dark_salmon">#E9967A</color>
+    <color name="red_tomato">#FF6347</color>
+    <color name="red_crimson">#DC143C</color>
+    <color name="red_firebrick">#B22222</color>
+    <color name="red_dark">#8B0000</color>
+    <color name="red_maroon">#800000</color>
+    <color name="red_coral">#FF4500</color>
+    <color name="red_rose">#C21E56</color>
+
+    ``
+
+
 
 </resources>

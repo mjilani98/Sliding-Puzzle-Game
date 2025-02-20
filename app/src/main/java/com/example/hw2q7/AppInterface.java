@@ -6,6 +6,7 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -28,6 +29,11 @@ public class AppInterface extends RelativeLayout
     //grid for the initial board
     private GridLayout initialGrid;
 
+    private Button upButton;
+    private Button downButton;
+    private Button rightButton;
+    private Button leftButton;
+
 
 
     //constructor
@@ -41,10 +47,60 @@ public class AppInterface extends RelativeLayout
         //draw the goad board
         drawGoalBoard(context);
 
+        //Draw Buttons
+        drawButtons(context,buttonHandler);
+
+
         //setting the background screen color
         setBackgroundColor(Color.parseColor("#DDDDDD"));
 
     } // end of constructor
+
+    private void drawButtons(Context context,OnClickListener buttonHandler)
+    {
+        final int DP = (int)(getResources().getDisplayMetrics().density);
+
+        //layouts for the buttons
+
+
+        //Up button
+        upButton = new Button(context);
+        upButton.setId(Button.generateViewId());
+        upButton.setText("Up");
+        upButton.setTextColor(Color.parseColor("#FF000000"));
+        upButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+        upButton.setBackgroundColor(Color.parseColor("#E9967A"));
+        upButton.setOnClickListener(buttonHandler);
+        //layouts for the up button
+        RelativeLayout.LayoutParams upButtonLayout = new RelativeLayout.LayoutParams(0,0);
+        upButtonLayout.width = ViewGroup.LayoutParams.WRAP_CONTENT;
+        upButtonLayout.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        upButtonLayout.topMargin = 80 * DP;
+        upButtonLayout.addRule(RelativeLayout.BELOW,grid.getId());
+        upButtonLayout.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        upButton.setLayoutParams(upButtonLayout);
+        addView(upButton);
+
+        //Down button
+        downButton = new Button(context);
+        downButton.setId(Button.generateViewId());
+        downButton.setText("Down");
+        downButton.setTextColor(Color.parseColor("#FF000000"));
+        downButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+        downButton.setBackgroundColor(Color.parseColor("#E9967A"));
+        downButton.setOnClickListener(buttonHandler);
+        //setting layouts for the down button
+        RelativeLayout.LayoutParams downButtonLayout = new RelativeLayout.LayoutParams(0,0);
+        downButtonLayout.width = ViewGroup.LayoutParams.WRAP_CONTENT;
+        downButtonLayout.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        downButtonLayout.topMargin = 20 * DP;
+        downButtonLayout.addRule(RelativeLayout.BELOW,upButton.getId());
+        downButtonLayout.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        downButton.setLayoutParams(downButtonLayout);
+        addView(downButton);
+
+
+    }
 
     private void drawInitialBoard(Context context)
     {
