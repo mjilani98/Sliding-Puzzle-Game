@@ -13,11 +13,15 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
 
     private AppInterface anInterface;
+    private Game game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
+
+        //creating a game
+        game = new Game();
 
         //creating an object of the button handler
         ButtonHandler buttonHandler = new ButtonHandler();
@@ -25,18 +29,15 @@ public class MainActivity extends AppCompatActivity {
         //creating a screen
         anInterface = new AppInterface(this,buttonHandler);
 
-        //creating a puzzle controller object
-        Generator generator = new Generator();
-
         //setting up the screen
         setContentView(anInterface);
 
         //get the initial board and display it to the view
-        char[][] initialBoard = generator.generateInitialBoard();
+        char[][] initialBoard = game.getCurrentBoard();
         anInterface.drawCurrentBoard(initialBoard);
 
         //get the goal board and display it to the view
-        char[][] goalBoard = generator.generateGoalBoard();
+        char[][] goalBoard = game.getGoalBoard();
         anInterface.drawGoalBoard(goalBoard);
 
     }
@@ -54,22 +55,28 @@ public class MainActivity extends AppCompatActivity {
 
             if(id == 1) //up
             {
+                game.up();
+                anInterface.drawCurrentBoard(game.getCurrentBoard());
 
             }
             if(id == 2) //down
             {
-
+                game.down();
+                anInterface.drawCurrentBoard(game.getCurrentBoard());
             }
             if(id == 3) //left
             {
-
+                game.left();
+                anInterface.drawCurrentBoard(game.getCurrentBoard());
             }
             if(id == 4) //right
             {
-
+                game.right();
+                anInterface.drawCurrentBoard(game.getCurrentBoard());
             }
-
-
+            
         }
     }
+
+
 }
