@@ -1,10 +1,12 @@
 package com.example.hw2q7;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -74,7 +76,56 @@ public class MainActivity extends AppCompatActivity {
                 game.right();
                 anInterface.drawCurrentBoard(game.getCurrentBoard());
             }
+
+
+            //check if the player has won the game
+            if(game.checkWin())
+            {
+                showDialogBox();
+            }
             
+        }
+    }
+    private void showDialogBox()
+    {
+        //create a dialog box
+        AlertDialog.Builder dialogBox = new AlertDialog.Builder(this);
+
+        //set message on dialog box
+        dialogBox.setMessage("Game ended , do you want to play again");
+
+        //create an event handler for the dialog box
+        DialogListener handler = new DialogListener();
+
+        //add event handler to the dialog box
+        dialogBox.setPositiveButton("Yes",handler);
+        dialogBox.setNegativeButton("No",handler);
+        dialogBox.setNeutralButton("Cancel",handler);
+        dialogBox.show();
+    }
+
+    private class DialogListener implements DialogInterface.OnClickListener
+    {
+
+        @Override
+        public void onClick(DialogInterface dialog, int id)
+        {
+            //if the player wants to play again
+            if(id == 1)
+            {
+                //create a new game
+                game = new Game();
+                //set the board to the new game
+                char[][] newBoard = game.getCurrentBoard();
+                anInterface.drawCurrentBoard(newBoard);
+            }
+            //if the player wants to end the game
+            else if (id == 2)
+            {
+                //destroy the app
+                MainActivity.this.finish();
+            }
+            else ;
         }
     }
 
