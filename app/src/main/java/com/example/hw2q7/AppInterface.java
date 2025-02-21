@@ -151,7 +151,7 @@ public class AppInterface extends RelativeLayout
         addView(grid);
         //end of goal board
 
-        
+
         //creating and displaying buttons
         drawButtons(context,buttonHandler);
 
@@ -160,6 +160,7 @@ public class AppInterface extends RelativeLayout
 
     } // end of constructor
 
+    //method to display the buttons on the screen
     private void drawButtons(Context context,OnClickListener buttonHandler)
     {
         final int DP = (int)(getResources().getDisplayMetrics().density);
@@ -245,28 +246,57 @@ public class AppInterface extends RelativeLayout
 
     }
 
+    //method to display the current board to the screen
     public void drawCurrentBoard(char[][] currentBoard)
     {
         for(int x = 0 ;  x < BOARD_SIZE ; x++)
         {
             for (int y = 0; y < BOARD_SIZE; y++)
             {
-                initialBoard[x][y].setText(currentBoard[x][y]);
+                initialBoard[x][y].setText(""+currentBoard[x][y]);
             }
         }
     }
 
 
+    //method to display the goal board to the screen
     public void drawGoalBoard(char[][] goal)
     {
         for(int x = 0 ;  x < BOARD_SIZE ; x++)
         {
             for (int y = 0; y < BOARD_SIZE; y++)
             {
-                goalBoard[x][y].setText(goal[x][y]);
+                goalBoard[x][y].setText(""+goal[x][y]);
             }
         }
     }
 
+    //method to return the button id
+    public int findButton(Button button)
+    {
+        int id= 0 ;
+        //if up button is clicked, return 1
+        if(button.getId() == upButton.getId())
+        {
+            id = 1;
+        }
+        //if down button is clicked, return 2
+        if(button.getId() == downButton.getId())
+        {
+            id = 2;
+        }
+        //if left button is clicked, return 3
+        if(button.getId() == leftButton.getId())
+        {
+            id = 3;
+        }
+        //if right button is clicked, return 4
+        if(button.getId() == rightButton.getId())
+        {
+            id = 4;
+        }
+
+        return id;
+    }
 
 }
